@@ -95,9 +95,76 @@ menuButton.addEventListener("click", showMenuOptions);
 
 function showMenuOptions() {
     menuOptions.style.display = "block";
+    if (rulesWindow.style.display === "block") {
+        rulesWindow.style.display = "none";
+    }
 }
 
 ////Check Top Screen for Menu Options
 
+for (var i=0; i<3; i++) {
+    var makeMenuOption = document.createElement("div");
+    makeMenuOption.className = "menuOptionButton";
+    menuOptions.appendChild(makeMenuOption);
+}
+
+var menuOptionButton = document.getElementsByClassName("menuOptionButton");
+menuOptionButton[0].innerHTML = "Restart";
+menuOptionButton[1].innerHTML = "Help";
+menuOptionButton[2].innerHTML = "Quit";
+
+menuOptionButton[0].addEventListener("click", restartGame);
+menuOptionButton[1].addEventListener("click", helpButton);
+menuOptionButton[2].addEventListener("click", quitGame);
+
+var areYouSure = document.createElement("div");
+areYouSure.id = "areYouSure";
+areYouSure.innerHTML = "Are you Sure?";
+document.body.appendChild(areYouSure);
+areYouSure.style.display = "none";
+
+var imSure = document.createElement("div");
+imSure.id = "imSure";
+imSure.innerHTML = "YES";
+areYouSure.appendChild(imSure);
+imSure.addEventListener("click", confirmQuit);
+
+function confirmQuit() {
+    areYouSure.style.display = "none";
+    startGameOptions.style.display = "flex";
+    catImage.src = "/images/catFaceComplete.png";
+    menuButton.style.display = "none";
+    menuOptions.style.opacity = "1";
+    menuOptions.style.display = "none";
+    blindSquare.style.display = "none";
+}
+
+var notSure = document.createElement("div");
+notSure.id = "notSure";
+notSure.innerHTML = "NO";
+areYouSure.appendChild(notSure);
+notSure.addEventListener("click", returnToGame);
+
+function returnToGame() {
+    menuOptions.style.opacity = "1";
+    areYouSure.style.display = "none";
+}
+
+function restartGame() {
+    menuOptions.style.display = "none";
+}
+
+function helpButton() {
+    if (rulesWindow.style.display === "none") {
+        rulesWindow.style.display = "block";
+    } else {
+        rulesWindow.style.display = "none";
+    }
+}
+
+function quitGame() {
+    areYouSure.style.display = "block";
+    menuOptions.style.opacity = "0.5";
+}
 //End of Menu
 

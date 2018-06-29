@@ -33,7 +33,7 @@ body {
 
 #blindSquare {
     background-color: black;
-    height: 59%;
+    height: 80%;
     width: 99%;
     z-index: 2;
     margin: auto;
@@ -88,7 +88,7 @@ body {
     background-color: rgba(140,140,140,0.5);
     padding: 10px;
     position: absolute;
-    z-index: 3;
+    z-index: 4;
 }
 
 #rulesDescrip {
@@ -120,6 +120,8 @@ body {
     margin: 10px;
     border-radius: 5px;
     font-size: 40px;
+    position: absolute;
+    z-index: 4;
 }
 
 #menuOptions {
@@ -127,10 +129,72 @@ body {
     width: 30%;
     height: 40%;
     position: absolute;
-    z-index: 4;
+    z-index: 3;
     left: 35%;
     top: 20%;
     margin: auto;
     border-radius: 10px;
+}
+
+.menuOptionButton {
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    width: 95%;
+    height: 25%;
+    margin: auto;
+    color: white;
+    margin-top: 5%;
+    font-size: 35px;
+    text-align: center;
+    line-height: 200%;
+}
+
+#areYouSure {
+    background-color: red;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 4;
+    width: 30%;
+    height: 30%;
+    left: 35%;
+    top: 25%;
+    margin: auto;
+    text-align: center;
+    padding-top: 1%;
+    font-size: 30px;
+}
+
+#imSure {
+    background-color: blueviolet;
+    width: 75%;
+    height: 30%;
+    margin: auto;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 30px;
+    line-height: 200%;
+}
+
+#imSure:hover {
+    font-size: 35px;
+}
+
+#notSure {
+    background-color: blueviolet;
+    width: 75%;
+    height: 30%;
+    margin: auto;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 30px;
+    line-height: 200%;
+}
+
+#notSure:hover {
+    font-size: 35px;
 }
 /*End Menu*/
