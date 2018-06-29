@@ -34,7 +34,7 @@ body {
 
 #blindSquare {
     background-color: black;
-    height: 100%;
+    height: 549px;
     width: 1040px;
     margin: 0 auto;
     z-index: 2;
@@ -119,6 +119,7 @@ body {
     margin: auto;
     display: flex;
     width: 1040px;
+    height: 100px;
     position: absolute;
     z-index: 4;
 }
@@ -128,10 +129,17 @@ body {
     color: white;
     padding: 10px;
     width: 30%;
+    height: 80px;
     text-align: center;
     margin: auto;
-    border-radius: 5px;
-    font-size: 40px;
+    border-radius: 15px;
+    font-size: 50px;
+    line-height: 150%;
+}
+
+#menuButton:hover {
+    font-size: 60px;
+    line-height: 125%;
 }
 
 #menuOptions {
@@ -207,6 +215,24 @@ body {
 #notSure:hover {
     font-size: 35px;
 }
+
+#placeButton {
+    background-color: purple;
+    color: white;
+    padding: 10px;
+    width: 30%;
+    height: 80px;
+    text-align: center;
+    margin: auto;
+    border-radius: 15px;
+    font-size: 50px;
+    line-height: 150%;
+}
+
+#placeButton:hover {
+    font-size: 60px;
+    line-height: 125%;
+}
 /*End Menu*/
 
 /*Start Mid-Game*/
@@ -218,4 +244,6 @@ body {
     position: absolute;
     z-index: 3;
     text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
 }

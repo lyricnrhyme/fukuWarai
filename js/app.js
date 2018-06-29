@@ -54,11 +54,12 @@ function startGame() {
     catImage.src = "/images/catFace.png"
     startGameOptions.style.display = "none";
     blindSquare.style.display = "block";
-    menuButton.style.display = "block";
+    midGameOptions.style.display = "flex";
     partsDiv.style.display = "block";
     if (rulesWindow.style.display = "block") {
         rulesWindow.style.display = "none";
     }
+
 }
 
 var rulesButton = document.createElement("div");
@@ -99,12 +100,12 @@ function closeRules() {
 var midGameOptions = document.createElement("div");
 midGameOptions.id = "midGameOptions";
 document.body.appendChild(midGameOptions);
+midGameOptions.style.display = "none";
 
 var menuButton = document.createElement("div");
 menuButton.id = "menuButton";
 menuButton.innerHTML = "MENU";
 midGameOptions.appendChild(menuButton);
-menuButton.style.display = "none";
 menuButton.addEventListener("click", showMenuOptions);
 
 function showMenuOptions() {
@@ -152,12 +153,12 @@ function confirmQuit() {
     areYouSure.style.display = "none";
     startGameOptions.style.display = "flex";
     catImage.src = "/images/catFaceComplete.png";
-    menuButton.style.display = "none";
+    midGameOptions.style.display = "none";
     menuOptions.style.opacity = "1";
     menuOptions.style.display = "none";
     blindSquare.style.display = "none";
     menuButton.addEventListener("click", showMenuOptions);
-    menuButton.style.opacity = "1";
+    midGameOptions.style.opacity = "1";
     partsDiv.style.display = "none";
     partsDiv.style.opacity = "1";
     var randomArr = ["/images/catLeftEye.png", "/images/catRightEye.png", "/images/catLeftEyebrow.png", "/images/catRightEyebrow.png", "/images/catLeftWhiskers.png", "/images/catRightWhiskers.png", "/images/catMouth.png", "/images/catNose.png"]
@@ -171,7 +172,7 @@ notSure.addEventListener("click", returnToGame);
 
 function returnToGame() {
     menuOptions.style.opacity = "1";
-    menuButton.style.opacity = "1";
+    midGameOptions.style.opacity = "1";
     partsDiv.style.opacity = "1";
     areYouSure.style.display = "none";
     menuOptionButton[0].addEventListener("click", restartGame);
@@ -194,14 +195,39 @@ function helpButton() {
 function quitGame() {
     areYouSure.style.display = "block";
     menuOptions.style.opacity = "0.5";
-    menuButton.style.opacity = "0.5";
+    midGameOptions.style.opacity = "0.5";
     partsDiv.style.opacity = "0.5";
     menuOptionButton[0].removeEventListener("click", restartGame);
 }
+
+var placeButton = document.createElement("div");
+placeButton.id = "placeButton";
+placeButton.innerHTML = "PLACE";
+midGameOptions.appendChild(placeButton);
+placeButton.addEventListener("click", placePart);
+
+
 //End of Menu
 
 //Start of Gameplay
 var randomArr = ["/images/catLeftEye.png", "/images/catRightEye.png", "/images/catLeftEyebrow.png", "/images/catRightEyebrow.png", "/images/catLeftWhiskers.png", "/images/catRightWhiskers.png", "/images/catMouth.png", "/images/catNose.png"]
+for (var i=0; i<randomArr.length; i++) {
+    var makeImage = document.createElement("img");
+    makeImage.src = randomArr[i];
+    makeImage.className = "catParts";
+    makeImage.style.display = "none";
+    partsDiv.appendChild(makeImage);
+}
+
+var catParts = document.getElementsByClassName("catParts");
+catParts[0].style.width = "160px";
+catParts[1].style.width = "160px";
+catParts[2].style.width = "90px";
+catParts[3].style.width = "90px";
+catParts[4].style.width = "160px";
+catParts[5].style.width = "160px";
+catParts[6].style.width = "160px";
+catParts[7].style.width = "50px";
 
 ////Check Top Screen for partsDiv
 
