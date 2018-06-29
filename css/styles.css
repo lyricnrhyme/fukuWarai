@@ -6,7 +6,8 @@ body {
 /*All the top screen*/
 #title {
     background-color: yellow;
-    margin: auto;
+    /* margin: auto; */
+    width: 1040px;
     font-size: 70px;
     text-align: center;
 }
@@ -14,17 +15,17 @@ body {
 #gameScreen {
     height: 40%;
     background-color: green;
-    margin: auto;
-    width: 100%;
-    /* position: relative; */
+    /* margin: auto; */
+    width: 1040px;
     z-index: 1;
 }
 
 #startImage {
-    background-color: grey;
+    /* background-color: grey; */
     width: 60%;
     height: 100%;
-    margin: auto;
+    margin-left: auto;
+    margin-right:auto;
 }
 
 #catImage {
@@ -33,10 +34,10 @@ body {
 
 #blindSquare {
     background-color: black;
-    height: 80%;
-    width: 99%;
+    height: 100%;
+    width: 1040px;
+    margin: 0 auto;
     z-index: 2;
-    margin: auto;
     position: absolute;
 }
 /*End top screen*/
@@ -44,10 +45,10 @@ body {
 /*Start Game Options*/
 #startGameOptions {
     background-color: blue;
-    width: 100%;
+    width: 1040px;
     height: 100px;
     display: flex;
-    margin: auto;
+    /* margin: auto; */
 }
 
 #startGameButton {
@@ -85,14 +86,16 @@ body {
 
 /*Start Rules*/
 #rulesWindow {
-    background-color: rgba(140,140,140,0.5);
+    background-color: rgba(140,140,140,0.8);
     padding: 10px;
+    width: 1020px;
     position: absolute;
     z-index: 4;
 }
 
 #rulesDescrip {
     color: white;
+    font-size: 20px;
 }
 
 #closeRulesButton {
@@ -111,27 +114,34 @@ body {
 /*End Rules*/
 
 /*Start Menu*/
+#midGameOptions {
+    background-color: aqua;
+    margin: auto;
+    display: flex;
+    width: 1040px;
+    position: absolute;
+    z-index: 4;
+}
+
 #menuButton {
     background-color: purple;
     color: white;
     padding: 10px;
     width: 30%;
     text-align: center;
-    margin: 10px;
+    margin: auto;
     border-radius: 5px;
     font-size: 40px;
-    position: absolute;
-    z-index: 4;
 }
 
 #menuOptions {
     background-color: brown;
-    width: 30%;
-    height: 40%;
+    width: 350px;
+    height: 300px;
     position: absolute;
     z-index: 3;
-    left: 35%;
-    top: 20%;
+    left: 345px;
+    top: 150px;
     margin: auto;
     border-radius: 10px;
 }
@@ -154,10 +164,10 @@ body {
     border-radius: 10px;
     position: absolute;
     z-index: 4;
-    width: 30%;
-    height: 30%;
-    left: 35%;
-    top: 25%;
+    width: 350px;
+    height: 200px;
+    left: 345px;
+    top: 175px;
     margin: auto;
     text-align: center;
     padding-top: 1%;
@@ -198,3 +208,14 @@ body {
     font-size: 35px;
 }
 /*End Menu*/
+
+/*Start Mid-Game*/
+#partsDiv {
+    background-color: khaki;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+}

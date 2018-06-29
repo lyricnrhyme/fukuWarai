@@ -9,6 +9,12 @@ rulesWindow.id = "rulesWindow";
 document.body.appendChild(rulesWindow);
 rulesWindow.style.display = "none";
 
+var partsDiv = document.createElement("div");
+partsDiv.id = "partsDiv";
+partsDiv.innerHTML = "Place This:";
+document.body.appendChild(partsDiv);
+partsDiv.style.display = "none";
+
 var blindSquare = document.createElement("div");
 blindSquare.id = "blindSquare";
 document.body.appendChild(blindSquare);
@@ -49,6 +55,10 @@ function startGame() {
     startGameOptions.style.display = "none";
     blindSquare.style.display = "block";
     menuButton.style.display = "block";
+    partsDiv.style.display = "block";
+    if (rulesWindow.style.display = "block") {
+        rulesWindow.style.display = "none";
+    }
 }
 
 var rulesButton = document.createElement("div");
@@ -86,15 +96,24 @@ function closeRules() {
 //End of Rules
 
 //Start of Menu
+var midGameOptions = document.createElement("div");
+midGameOptions.id = "midGameOptions";
+document.body.appendChild(midGameOptions);
+
 var menuButton = document.createElement("div");
 menuButton.id = "menuButton";
 menuButton.innerHTML = "MENU";
-document.body.appendChild(menuButton);
+midGameOptions.appendChild(menuButton);
 menuButton.style.display = "none";
 menuButton.addEventListener("click", showMenuOptions);
 
 function showMenuOptions() {
-    menuOptions.style.display = "block";
+    if (menuOptions.style.display === "none") {
+        menuOptions.style.display = "block";
+    } else {
+        menuOptions.style.display = "none";
+    }
+    
     if (rulesWindow.style.display === "block") {
         rulesWindow.style.display = "none";
     }
@@ -137,6 +156,11 @@ function confirmQuit() {
     menuOptions.style.opacity = "1";
     menuOptions.style.display = "none";
     blindSquare.style.display = "none";
+    menuButton.addEventListener("click", showMenuOptions);
+    menuButton.style.opacity = "1";
+    partsDiv.style.display = "none";
+    partsDiv.style.opacity = "1";
+    var randomArr = ["/images/catLeftEye.png", "/images/catRightEye.png", "/images/catLeftEyebrow.png", "/images/catRightEyebrow.png", "/images/catLeftWhiskers.png", "/images/catRightWhiskers.png", "/images/catMouth.png", "/images/catNose.png"]
 }
 
 var notSure = document.createElement("div");
@@ -147,11 +171,16 @@ notSure.addEventListener("click", returnToGame);
 
 function returnToGame() {
     menuOptions.style.opacity = "1";
+    menuButton.style.opacity = "1";
+    partsDiv.style.opacity = "1";
     areYouSure.style.display = "none";
+    menuOptionButton[0].addEventListener("click", restartGame);
+    menuButton.addEventListener("click", showMenuOptions);
 }
 
 function restartGame() {
     menuOptions.style.display = "none";
+    var randomArr = ["/images/catLeftEye.png", "/images/catRightEye.png", "/images/catLeftEyebrow.png", "/images/catRightEyebrow.png", "/images/catLeftWhiskers.png", "/images/catRightWhiskers.png", "/images/catMouth.png", "/images/catNose.png"]
 }
 
 function helpButton() {
@@ -165,6 +194,17 @@ function helpButton() {
 function quitGame() {
     areYouSure.style.display = "block";
     menuOptions.style.opacity = "0.5";
+    menuButton.style.opacity = "0.5";
+    partsDiv.style.opacity = "0.5";
+    menuOptionButton[0].removeEventListener("click", restartGame);
 }
 //End of Menu
+
+//Start of Gameplay
+var randomArr = ["/images/catLeftEye.png", "/images/catRightEye.png", "/images/catLeftEyebrow.png", "/images/catRightEyebrow.png", "/images/catLeftWhiskers.png", "/images/catRightWhiskers.png", "/images/catMouth.png", "/images/catNose.png"]
+
+////Check Top Screen for partsDiv
+
+//End of Gameplay
+
 
