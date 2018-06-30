@@ -4,6 +4,13 @@ title.id = "title";
 title.innerHTML = "Fuku Warai";
 document.body.appendChild(title);
 
+var audio = document.createElement("audio");
+audio.id = "audio";
+audio.src = "/assets/skyleoChibi.mp3";
+audio.preload = "auto";
+document.body.appendChild(audio);
+audio.play(); //plays music
+
 var rulesWindow = document.createElement("div");
 rulesWindow.id = "rulesWindow";
 document.body.appendChild(rulesWindow);
@@ -14,6 +21,34 @@ partsDiv.id = "partsDiv";
 partsDiv.innerHTML = "Place This:";
 document.body.appendChild(partsDiv);
 partsDiv.style.display = "none";
+
+var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
+for (var i=0; i<randomArr.length; i++) {
+    var makeThisDrag = document.createElement("div");
+    makeThisDrag.className = "dragDiv";
+    makeThisDrag.style.display = "none";
+    partsDiv.appendChild(makeThisDrag);
+    
+    var makeClickDragDiv = document.createElement("div");
+    makeClickDragDiv.className = "clickDragDiv";
+    makeThisDrag.appendChild(makeClickDragDiv);
+    
+    var makeImage = document.createElement("img");
+    makeImage.src = randomArr[i];
+    makeImage.className = "catParts";
+    makeClickDragDiv.appendChild(makeImage);
+}
+
+var dragDiv = document.getElementsByClassName("dragDiv");
+var catParts = document.getElementsByClassName("catParts");
+catParts[0].style.width = "160px";
+catParts[1].style.width = "160px";
+catParts[2].style.width = "90px";
+catParts[3].style.width = "90px";
+catParts[4].style.width = "160px";
+catParts[5].style.width = "160px";
+catParts[6].style.width = "160px";
+catParts[7].style.width = "50px";
 
 var blindSquare = document.createElement("div");
 blindSquare.id = "blindSquare";
@@ -34,7 +69,7 @@ startImage.id = "startImage";
 gameScreen.appendChild(startImage);
 
 var catImage = document.createElement("img");
-catImage.src = "/images/catFaceComplete.png";;;
+catImage.src = "/assets/catFaceComplete.png";;;
 catImage.id = "catImage";
 startImage.appendChild(catImage);
 //End Top Screen
@@ -51,7 +86,7 @@ startGameOptions.appendChild(startGameButton);
 startGameButton.addEventListener("click", startGame);
 
 function startGame() {
-    catImage.src = "/images/catFace.png"
+    catImage.src = "/assets/catFace.png"
     startGameOptions.style.display = "none";
     blindSquare.style.display = "block";
     midGameOptions.style.display = "flex";
@@ -59,7 +94,7 @@ function startGame() {
     if (rulesWindow.style.display = "block") {
         rulesWindow.style.display = "none";
     }
-
+    dragDiv[Math.floor(Math.random() * dragDiv.length)].style.display = "inline-block";
 }
 
 var rulesButton = document.createElement("div");
@@ -82,7 +117,7 @@ function openRules() {
 
 var rulesDescrip = document.createElement("div");
 rulesDescrip.id = "rulesDescrip";
-rulesDescrip.innerHTML = "Fuku Warai is a game where you reconstruct a face without looking (what?!) You will be given a random part of the face which you will place blindly on a blank face. <br><br> Click and drag each face part given at random onto the colored square where you think the part will most likely be placed on. The goal of the game is to make the face as perfect as possible (or feel free to try make it Picasso style!) Good luck!";
+rulesDescrip.innerHTML = "Fuku Warai is a game where you reconstruct a face without looking (what?!) You will be given a random part of the face which you will place blindly on a blank face. <br><br> Click and drag each face part given at random where you think the part should go onto the blank surface. The goal of the game is to make the face as perfect as possible (or feel free to try make it Picasso style!) Good luck!";
 rulesWindow.appendChild(rulesDescrip);
 
 var closeRulesButton = document.createElement("div");
@@ -152,16 +187,17 @@ imSure.addEventListener("click", confirmQuit);
 function confirmQuit() {
     areYouSure.style.display = "none";
     startGameOptions.style.display = "flex";
-    catImage.src = "/images/catFaceComplete.png";
+    catImage.src = "/assets/catFaceComplete.png";
     midGameOptions.style.display = "none";
     menuOptions.style.opacity = "1";
     menuOptions.style.display = "none";
     blindSquare.style.display = "none";
     menuButton.addEventListener("click", showMenuOptions);
+    menuOptionButton[0].addEventListener("click", restartGame);
     midGameOptions.style.opacity = "1";
     partsDiv.style.display = "none";
     partsDiv.style.opacity = "1";
-    var randomArr = ["/images/catLeftEye.png", "/images/catRightEye.png", "/images/catLeftEyebrow.png", "/images/catRightEyebrow.png", "/images/catLeftWhiskers.png", "/images/catRightWhiskers.png", "/images/catMouth.png", "/images/catNose.png"]
+    var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
 }
 
 var notSure = document.createElement("div");
@@ -181,7 +217,7 @@ function returnToGame() {
 
 function restartGame() {
     menuOptions.style.display = "none";
-    var randomArr = ["/images/catLeftEye.png", "/images/catRightEye.png", "/images/catLeftEyebrow.png", "/images/catRightEyebrow.png", "/images/catLeftWhiskers.png", "/images/catRightWhiskers.png", "/images/catMouth.png", "/images/catNose.png"]
+    var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
 }
 
 function helpButton() {
@@ -198,6 +234,7 @@ function quitGame() {
     midGameOptions.style.opacity = "0.5";
     partsDiv.style.opacity = "0.5";
     menuOptionButton[0].removeEventListener("click", restartGame);
+    menuButton.removeEventListener("click", showMenuOptions);
 }
 
 var placeButton = document.createElement("div");
@@ -206,28 +243,13 @@ placeButton.innerHTML = "PLACE";
 midGameOptions.appendChild(placeButton);
 placeButton.addEventListener("click", placePart);
 
+function placePart() {
+
+}
 
 //End of Menu
 
 //Start of Gameplay
-var randomArr = ["/images/catLeftEye.png", "/images/catRightEye.png", "/images/catLeftEyebrow.png", "/images/catRightEyebrow.png", "/images/catLeftWhiskers.png", "/images/catRightWhiskers.png", "/images/catMouth.png", "/images/catNose.png"]
-for (var i=0; i<randomArr.length; i++) {
-    var makeImage = document.createElement("img");
-    makeImage.src = randomArr[i];
-    makeImage.className = "catParts";
-    makeImage.style.display = "none";
-    partsDiv.appendChild(makeImage);
-}
-
-var catParts = document.getElementsByClassName("catParts");
-catParts[0].style.width = "160px";
-catParts[1].style.width = "160px";
-catParts[2].style.width = "90px";
-catParts[3].style.width = "90px";
-catParts[4].style.width = "160px";
-catParts[5].style.width = "160px";
-catParts[6].style.width = "160px";
-catParts[7].style.width = "50px";
 
 ////Check Top Screen for partsDiv
 

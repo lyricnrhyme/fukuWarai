@@ -12,6 +12,10 @@ body {
     text-align: center;
 }
 
+#audio {
+    display: none;
+}
+
 #gameScreen {
     height: 40%;
     background-color: green;
@@ -33,7 +37,7 @@ body {
 }
 
 #blindSquare {
-    background-color: black;
+    background-color: darkcyan;
     height: 549px;
     width: 1040px;
     margin: 0 auto;
@@ -246,4 +250,15 @@ body {
     text-align: center;
     padding-top: 7px;
     padding-bottom: 10px;
+}
+
+.clickDragDiv {
+    background-color: white;
+    width: 200px;
+    height: 150px;
+    margin: auto;
+}
+
+.clickDragDiv:hover {
+    cursor: move;
 }
