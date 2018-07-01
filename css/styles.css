@@ -247,30 +247,26 @@ body {
     margin: auto;
     position: absolute;
     z-index: 3;
-    text-align: center;
+    /* text-align: center; */
     padding-top: 7px;
     padding-bottom: 10px;
-}
-
-.catParts {
-    background-color: white;
-    width: 200px;
-    height: 150px;
-    margin: auto;
-    z-index: 3;
 }
 
 .dragDiv {
     width: 200px;
     height: 150px;
     margin: auto;
-    z-index: 4;
+    z-index: 3;
+    position: absolute;
+    padding-left: 25px;
+    padding-top: 30px;
 }
 
 .clickDragDiv {
     width: 200px;
     height: 150px;
     margin: auto;
+    z-index: 5;
 }
 
 .clickDragDiv:hover {

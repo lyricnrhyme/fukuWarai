@@ -12,7 +12,7 @@ audio.id = "audio";
 audio.src = "/assets/skyleoChibi.mp3";
 audio.preload = "auto";
 document.body.appendChild(audio);
-audio.play(); //plays music
+// audio.play(); //plays music
 
 ////Pop-up Rules Window
 var rulesWindow = document.createElement("div");
@@ -23,21 +23,17 @@ rulesWindow.style.display = "none";
 ////Window where Cat Face Parts show up
 var partsDiv = document.createElement("div");
 partsDiv.id = "partsDiv";
-partsDiv.innerHTML = "Place This:";
+// partsDiv.innerHTML = "Place This:";
 document.body.appendChild(partsDiv);
 partsDiv.style.display = "none";
 
 ////Adding Cat Face Parts into Document
 var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
 for (var i=0; i<randomArr.length; i++) {
-    var makeCatParts = document.createElement("div");
-    makeCatParts.className = "catParts";
-    makeCatParts.style.display = "none";
-    partsDiv.appendChild(makeCatParts);
-    
     var makeThisDrag = document.createElement("div");
     makeThisDrag.className = "dragDiv";
-    makeCatParts.appendChild(makeThisDrag);
+    makeThisDrag.style.display = "none";
+    partsDiv.appendChild(makeThisDrag);
     
     var makeClickDragDiv = document.createElement("div");
     makeClickDragDiv.className = "clickDragDiv";
@@ -50,8 +46,8 @@ for (var i=0; i<randomArr.length; i++) {
 }
 
 ////Adjusting each image size
-var catParts = document.getElementsByClassName("catParts");
 var dragDiv = document.getElementsByClassName("dragDiv");
+var clickDragDiv = document.getElementsByClassName("clickDragDiv");
 var catPartImage = document.getElementsByClassName("catPartImage");
 catPartImage[0].style.width = "160px";
 catPartImage[1].style.width = "160px";
@@ -115,7 +111,7 @@ function startGame() {
     if (rulesWindow.style.display = "block") {
         rulesWindow.style.display = "none";
     }
-    catParts[Math.floor(Math.random() * catParts.length)].style.display = "inline-block";
+    dragDiv[Math.floor(Math.random() * dragDiv.length)].style.display = "inline-block";
 }
 
 ////Adding Rules Button
@@ -286,41 +282,50 @@ midGameOptions.appendChild(placeButton);
 placeButton.addEventListener("click", placePart);
 
 ////Function: Clicking and Dragging Nonsense
-var thisPart = this.querySelector(".dragDiv");
-dragElement(thisPart);
+for (var i=0; i<dragDiv.length; i++) {
+    dragElement(dragDiv[i]);
+
 function dragElement(elmnt) {
-var pos1 = 0;
-var pos2 = 0;
-var pos3 = 0;
-var pos4 = 0;
-elmnt.mousedown = dragMouseDown;
-}
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (clickDragDiv[i]) {
+    /* if present, the header is where you move the DIV from:*/
+    clickDragDiv[i].onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
 
-function dragMouseDown(e) {
-e = e || window.event;
-e.preventDefault();
-pos3 = e.clientX;
-pos4 = e.clientY;
-document.mouseup = closeDragElement;
-document.mousemove = elementDrag;
-}
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
 
-function elementDrag(e) {
-e = e || window.event;
-e.preventDefault();
-pos1 = pos3 - e.clientX;
-pos2 = pos4 - e.clientY;
-pos3 = e.clientX;
-pos4 = e.clientY;
-elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-}
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
 
-function closeDragElement() {
-document.mouseup = null;
-document.mousemove = null;
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
 }
-
+}
 ////ENDING NONSENSE
 
 
