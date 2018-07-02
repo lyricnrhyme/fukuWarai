@@ -20,7 +20,11 @@ backgroundMusic.play();
 var buttonNoise = document.createElement("audio");
 buttonNoise.id = "buttonNoise";
 buttonNoise.src = "assets/videoCoin.wav";
-document.body.appendChild(buttonNoise);
+
+//////Final Button Noise
+var finalNoise = document.createElement("audio");
+finalNoise.id = "finalNoise";
+finalNoise.src = "assets/correctSound.wav";
 
 ////Pop-up Rules Window
 var rulesWindow = document.createElement("div");
@@ -94,7 +98,7 @@ var catImage = document.createElement("img");
 catImage.src = "assets/catFaceComplete.png";;;
 catImage.id = "catImage";
 startImage.appendChild(catImage);
-//End Top Screen
+//End Top Screen***
 
 //Start of Start Game Options
 
@@ -140,7 +144,7 @@ function openRules() {
     }
     buttonNoise.play();
 }
-//End of Start Game Options
+//End of Start Game Options***
 
 //Start of Rules
 
@@ -164,7 +168,7 @@ function closeRules() {
     rulesWindow.style.display = "none";
     buttonNoise.play();
 }
-//End of Rules
+//End of Rules***
 
 //Start of Menu
 
@@ -218,6 +222,25 @@ menuOptionButton[2].addEventListener("click", quitGame);
 function restartGame() {
     menuOptions.style.display = "none";
     buttonNoise.play();
+    if (blindSquare.style.display === "none") {
+        blindSquare.style.display = "block";
+    }
+    placeButton.innerHTML = "PLACE";
+    placeButton.style.fontSize = "50px";
+    placeButton.style.lineHeight = "140%";
+    placeButton.style.padding = "10px";
+    while (placedDiv.length > 0) {
+        placedDiv[0].className = "dragDiv";
+    }
+    for (var i=0; i<dragDiv.length; i++) {
+        dragDiv[i].style.top = "30px";
+        dragDiv[i].style.left = "10px";
+        dragDiv[i].style.display = "none";
+    }
+    if (finalGameOptions.style.display === "flex") {
+        finalGameOptions.style.display = "none";
+    }
+    dragDiv[0].style.display = "block";
 }
 
 ////Function: Opens Rules Window (When Help Button Clicked)
@@ -269,7 +292,23 @@ function confirmQuit() {
     midGameOptions.style.opacity = "1";
     partsDiv.style.display = "none";
     partsDiv.style.opacity = "1";
+    finalGameOptions.style.display = "none";
     buttonNoise.play();
+    placeButton.innerHTML = "PLACE";
+    placeButton.style.fontSize = "50px";
+    placeButton.style.lineHeight = "125%";
+    placeButton.style.padding = "10px";
+    while (placedDiv.length > 0) {
+        placedDiv[0].className = "dragDiv";
+    }
+    for (var i=0; i<dragDiv.length; i++) {
+        dragDiv[i].style.top = "30px";
+        dragDiv[i].style.left = "10px";
+        dragDiv[i].style.display = "none";
+    }
+    if (finalGameOptions.style.display === "flex") {
+        finalGameOptions.style.display = "none";
+    }
 }
 
 ////No Button on Are You Sure
@@ -297,7 +336,7 @@ placeButton.innerHTML = "PLACE";
 midGameOptions.appendChild(placeButton);
 placeButton.addEventListener("click", placePart);
 
-//End of Menu
+//End of Menu***
 
 //Start of Gameplay
 
@@ -348,20 +387,15 @@ for (var i=0; i<dragDiv.length; i++) {
 ////Function: Placing Cat Face Parts
 var placedDiv = document.getElementsByClassName("placedDiv");
 // var placedCatPart = document.getElementsByClassName("placedCatPart");
-
 function placePart() {
     if (placeButton.innerHTML === "PLACE") {
         for (var i=0; i<dragDiv.length; i++) {
             if (dragDiv[i].style.display === "block") {
-                // console.log(catPartImage[i]);
                 dragDiv[i].className = "placedDiv";
-                catPartImage[i].className = "placedCatPart";
-                // console.log(placedPart[placedPart.length-1]);
             }
         }
-        placedDiv[placedDiv.length-1].style.visibility = "hidden";
+        placedDiv[placedDiv.length-1].style.display = "none";
         buttonNoise.play();
-        // placedCatPart[placedCatPart.length-1].style.display = "none";
         dragDiv[0].style.display = "block";
         if (dragDiv.length === 1) {
             placeButton.innerHTML = "PLACE & REVEAL";
@@ -373,13 +407,37 @@ function placePart() {
         buttonNoise.play();
     } else {
         for (var i=0; i<placedDiv.length; i++) {
-            placedDiv[i].style.visibility = null;
+            placedDiv[i].style.display = "block";
         }
+        dragDiv[0].className = "placedDiv";
         blindSquare.style.display = "none";
+        finalGameOptions.style.display = "flex";
+        finalNoise.play();
     }
 }
+
 ////Check Top Screen for partsDiv
 
-//End of Gameplay
+//End of Gameplay***
 
+//Start of Final Result
 
+////Adding Final Menu Options
+var finalGameOptions = document.createElement("div");
+finalGameOptions.id = "finalGameOptions";
+document.body.appendChild(finalGameOptions);
+finalGameOptions.style.display = "none";
+
+////Adding Replay Button
+var replayButton = document.createElement("div");
+replayButton.id = "replayButton";
+replayButton.innerHTML = "REPLAY?"
+finalGameOptions.appendChild(replayButton);
+replayButton.addEventListener("click", restartGame);
+
+////Adding Return to Main Menu Button
+var returnToMain = document.createElement("div");
+returnToMain.id = "returnToMain";
+returnToMain.innerHTML = "RETURN TO<br> MAIN MENU";
+finalGameOptions.appendChild(returnToMain);
+returnToMain.addEventListener("click", confirmQuit);
