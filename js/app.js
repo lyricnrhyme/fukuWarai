@@ -11,15 +11,14 @@ document.body.appendChild(title);
 //////Background Music
 var backgroundMusic = document.createElement("audio");
 backgroundMusic.id = "backgroundMusic";
-backgroundMusic.src = "/assets/skyleoChibi.mp3";
+backgroundMusic.src = "assets/skyleoChibi.mp3";
 backgroundMusic.preload = "auto";
-document.body.appendChild(backgroundMusic);
-backgroundMusic.play(); //plays music
+backgroundMusic.play();
 
 //////Button Noises
 var buttonNoise = document.createElement("audio");
 buttonNoise.id = "buttonNoise";
-buttonNoise.src = "/assets/videoCoin.wav";
+buttonNoise.src = "assets/videoCoin.wav";
 document.body.appendChild(buttonNoise);
 
 ////Pop-up Rules Window
@@ -36,7 +35,7 @@ document.body.appendChild(partsDiv);
 partsDiv.style.display = "none";
 
 ////Adding Cat Face Parts into Document
-var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
+var randomArr = ["assets/catLeftEye.png", "assets/catRightEye.png", "assets/catLeftEyebrow.png", "assets/catRightEyebrow.png", "assets/catLeftWhiskers.png", "assets/catRightWhiskers.png", "assets/catMouth.png", "assets/catNose.png"]
 for (var i=0; i<randomArr.length; i++) {
     var makeThisDrag = document.createElement("div");
     makeThisDrag.className = "dragDiv";
@@ -91,7 +90,7 @@ gameScreen.appendChild(startImage);
 
 ////Adding Cat Image in (WIP)
 var catImage = document.createElement("img");
-catImage.src = "/assets/catFaceComplete.png";;;
+catImage.src = "assets/catFaceComplete.png";;;
 catImage.id = "catImage";
 startImage.appendChild(catImage);
 //End Top Screen
@@ -112,7 +111,7 @@ startGameButton.addEventListener("click", startGame);
 
 ////Function: Starts Game
 function startGame() {
-    catImage.src = "/assets/catFace.png"
+    catImage.src = "assets/catFace.png"
     startGameOptions.style.display = "none";
     blindSquare.style.display = "block";
     midGameOptions.style.display = "flex";
@@ -217,7 +216,6 @@ menuOptionButton[2].addEventListener("click", quitGame);
 ////Function: Restart Game (When Restart Button Clicked)
 function restartGame() {
     menuOptions.style.display = "none";
-    var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
     buttonNoise.play();
 }
 
@@ -260,7 +258,7 @@ imSure.addEventListener("click", confirmQuit);
 function confirmQuit() {
     areYouSure.style.display = "none";
     startGameOptions.style.display = "flex";
-    catImage.src = "/assets/catFaceComplete.png";
+    catImage.src = "assets/catFaceComplete.png";
     midGameOptions.style.display = "none";
     menuOptions.style.opacity = "1";
     menuOptions.style.display = "none";
@@ -270,7 +268,6 @@ function confirmQuit() {
     midGameOptions.style.opacity = "1";
     partsDiv.style.display = "none";
     partsDiv.style.opacity = "1";
-    var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
     buttonNoise.play();
 }
 
@@ -367,6 +364,10 @@ function placePart() {
         dragDiv[0].style.display = "block";
         if (dragDiv.length === 1) {
             placeButton.innerHTML = "PLACE & REVEAL";
+            placeButton.style.fontSize = "45px";
+            placeButton.style.lineHeight = "45px";
+            placeButton.style.paddingTop = "5px";
+            placeButton.style.paddingBottom = "15px";
         }
         buttonNoise.play();
     } else {
