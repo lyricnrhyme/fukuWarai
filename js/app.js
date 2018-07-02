@@ -23,7 +23,7 @@ rulesWindow.style.display = "none";
 ////Window where Cat Face Parts show up
 var partsDiv = document.createElement("div");
 partsDiv.id = "partsDiv";
-// partsDiv.innerHTML = "Place This:";
+partsDiv.innerHTML = "Place This:<br>";
 document.body.appendChild(partsDiv);
 partsDiv.style.display = "none";
 
@@ -35,19 +35,20 @@ for (var i=0; i<randomArr.length; i++) {
     makeThisDrag.style.display = "none";
     partsDiv.appendChild(makeThisDrag);
     
-    var makeClickDragDiv = document.createElement("div");
-    makeClickDragDiv.className = "clickDragDiv";
-    makeThisDrag.appendChild(makeClickDragDiv);
+    // var makeClickDragDiv = document.createElement("div");
+    // makeClickDragDiv.className = "clickDragDiv";
+    // makeThisDrag.appendChild(makeClickDragDiv);
     
     var makeImage = document.createElement("img");
     makeImage.src = randomArr[i];
     makeImage.className = "catPartImage";
-    makeClickDragDiv.appendChild(makeImage);
+    // makeClickDragDiv.appendChild(makeImage);
+    makeThisDrag.appendChild(makeImage);
 }
 
 ////Adjusting each image size
 var dragDiv = document.getElementsByClassName("dragDiv");
-var clickDragDiv = document.getElementsByClassName("clickDragDiv");
+// var clickDragDiv = document.getElementsByClassName("clickDragDiv");
 var catPartImage = document.getElementsByClassName("catPartImage");
 catPartImage[0].style.width = "160px";
 catPartImage[1].style.width = "160px";
@@ -111,7 +112,7 @@ function startGame() {
     if (rulesWindow.style.display = "block") {
         rulesWindow.style.display = "none";
     }
-    dragDiv[Math.floor(Math.random() * dragDiv.length)].style.display = "inline-block";
+    dragDiv[Math.floor(Math.random() * dragDiv.length)].style.display = "block";
 }
 
 ////Adding Rules Button
@@ -281,62 +282,73 @@ placeButton.innerHTML = "PLACE";
 midGameOptions.appendChild(placeButton);
 placeButton.addEventListener("click", placePart);
 
+//End of Menu
+
+//Start of Gameplay
+
 ////Function: Clicking and Dragging Nonsense
 for (var i=0; i<dragDiv.length; i++) {
     dragElement(dragDiv[i]);
 
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (clickDragDiv[i]) {
-    /* if present, the header is where you move the DIV from:*/
-    clickDragDiv[i].onmousedown = dragMouseDown;
-  } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
-    elmnt.onmousedown = dragMouseDown;
-  }
+    function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (catPartImage[i]) {
+            catPartImage[i].onmousedown = dragMouseDown;
+        } else {
+            elmnt.onmousedown = dragMouseDown;
+        }
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
 
-  function closeDragElement() {
-    /* stop moving when mouse button is released:*/
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
+        function closeDragElement() {
+            /* stop moving when mouse button is released:*/
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
 }
-}
-////ENDING NONSENSE
-
 
 ////Function: Placing Cat Face Parts
+var placedDiv = document.getElementsByClassName("placedDiv");
+var placedCatPart = document.getElementsByClassName("placedCatPart");
+
 function placePart() {
-    console.log("WIP");
+    for (var i=0; i<dragDiv.length; i++) {
+        if (dragDiv[i].style.display === "block") {
+            // console.log(catPartImage[i]);
+            dragDiv[i].className = "placedDiv";
+            catPartImage[i].className = "placedCatPart";
+            // console.log(placedPart[placedPart.length-1]);
+        }
+    }
+    placedDiv[placedDiv.length-1].style.display = "none";
+    placedCatPart[placedCatPart.length-1].style.display = "none";
+    console.log(dragDiv.length); //dragDiv.length
+    console.log(placedDiv.length); //placedPart.length
+    dragDiv[Math.floor(Math.random() * dragDiv.length)].style.display = "block";
 }
-
-//End of Menu
-
-//Start of Gameplay
 
 ////Check Top Screen for partsDiv
 

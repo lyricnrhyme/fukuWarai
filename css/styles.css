@@ -267,6 +267,7 @@ body {
     height: 150px;
     margin: auto;
     z-index: 5;
+    position: absolute;
 }
 
 .clickDragDiv:hover {
