@@ -41,7 +41,7 @@ body {
     height: 549px;
     width: 1040px;
     margin: 0 auto;
-    z-index: 2;
+    z-index: 3;
     position: absolute;
 }
 /*End top screen*/
@@ -94,7 +94,7 @@ body {
     padding: 10px;
     width: 1020px;
     position: absolute;
-    z-index: 4;
+    z-index: 5;
 }
 
 #rulesDescrip {
@@ -151,7 +151,7 @@ body {
     width: 350px;
     height: 300px;
     position: absolute;
-    z-index: 3;
+    z-index: 6;
     left: 345px;
     top: 150px;
     margin: auto;
@@ -175,7 +175,7 @@ body {
     background-color: red;
     border-radius: 10px;
     position: absolute;
-    z-index: 5;
+    z-index: 7;
     width: 350px;
     height: 200px;
     left: 345px;
@@ -246,7 +246,7 @@ body {
     height: 200px;
     margin: auto;
     position: absolute;
-    z-index: 3;
+    z-index: 4;
     /* text-align: center; */
     padding-top: 7px;
     padding-bottom: 10px;
@@ -256,7 +256,7 @@ body {
     width: 200px;
     height: 150px;
     margin: auto;
-    z-index: 3;
+    z-index: 4;
     position: absolute;
     padding-left: 25px;
     padding-top: 30px;
@@ -272,4 +272,9 @@ body {
 
 .clickDragDiv:hover {
     cursor: move;
+}
+
+.placedDiv {
+    position: absolute;
+    z-index: 5;
 }

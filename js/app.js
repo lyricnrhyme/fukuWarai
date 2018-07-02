@@ -7,12 +7,20 @@ title.innerHTML = "Fuku Warai";
 document.body.appendChild(title);
 
 ////Audio Element
-var audio = document.createElement("audio");
-audio.id = "audio";
-audio.src = "/assets/skyleoChibi.mp3";
-audio.preload = "auto";
-document.body.appendChild(audio);
-// audio.play(); //plays music
+
+//////Background Music
+var backgroundMusic = document.createElement("audio");
+backgroundMusic.id = "backgroundMusic";
+backgroundMusic.src = "/assets/skyleoChibi.mp3";
+backgroundMusic.preload = "auto";
+document.body.appendChild(backgroundMusic);
+backgroundMusic.play(); //plays music
+
+//////Button Noises
+var buttonNoise = document.createElement("audio");
+buttonNoise.id = "buttonNoise";
+buttonNoise.src = "/assets/videoCoin.wav";
+document.body.appendChild(buttonNoise);
 
 ////Pop-up Rules Window
 var rulesWindow = document.createElement("div");
@@ -50,13 +58,13 @@ for (var i=0; i<randomArr.length; i++) {
 var dragDiv = document.getElementsByClassName("dragDiv");
 // var clickDragDiv = document.getElementsByClassName("clickDragDiv");
 var catPartImage = document.getElementsByClassName("catPartImage");
-catPartImage[0].style.width = "160px";
-catPartImage[1].style.width = "160px";
+catPartImage[0].style.width = "140px";
+catPartImage[1].style.width = "140px";
 catPartImage[2].style.width = "90px";
 catPartImage[3].style.width = "90px";
-catPartImage[4].style.width = "160px";
-catPartImage[5].style.width = "160px";
-catPartImage[6].style.width = "160px";
+catPartImage[4].style.width = "120px";
+catPartImage[5].style.width = "120px";
+catPartImage[6].style.width = "120px";
 catPartImage[7].style.width = "50px";
 
 ////Adding Blind Square to document (Hides Cat Face)
@@ -112,7 +120,8 @@ function startGame() {
     if (rulesWindow.style.display = "block") {
         rulesWindow.style.display = "none";
     }
-    dragDiv[Math.floor(Math.random() * dragDiv.length)].style.display = "block";
+    dragDiv[0].style.display = "block";
+    buttonNoise.play();
 }
 
 ////Adding Rules Button
@@ -129,6 +138,7 @@ function openRules() {
     } else {
         rulesWindow.style.display = "none";
     }
+    buttonNoise.play();
 }
 //End of Start Game Options
 
@@ -152,6 +162,7 @@ closeRulesButton.addEventListener("click", closeRules);
 ////Function: Closes Rules
 function closeRules() {
     rulesWindow.style.display = "none";
+    buttonNoise.play();
 }
 //End of Rules
 
@@ -181,6 +192,7 @@ function showMenuOptions() {
     if (rulesWindow.style.display === "block") {
         rulesWindow.style.display = "none";
     }
+    buttonNoise.play();
 }
 
 ////Check Top Screen for Menu Options
@@ -206,6 +218,7 @@ menuOptionButton[2].addEventListener("click", quitGame);
 function restartGame() {
     menuOptions.style.display = "none";
     var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
+    buttonNoise.play();
 }
 
 ////Function: Opens Rules Window (When Help Button Clicked)
@@ -215,6 +228,7 @@ function helpButton() {
     } else {
         rulesWindow.style.display = "none";
     }
+    buttonNoise.play();
 }
 
 ////Function: Redirects to Are You Sure Window, then Start Menu (When Quit Button Clicked)
@@ -225,6 +239,7 @@ function quitGame() {
     partsDiv.style.opacity = "0.5";
     menuOptionButton[0].removeEventListener("click", restartGame);
     menuButton.removeEventListener("click", showMenuOptions);
+    buttonNoise.play();
 }
 
 ////Adding Are You Sure Option when Quit Button Clicked
@@ -256,6 +271,7 @@ function confirmQuit() {
     partsDiv.style.display = "none";
     partsDiv.style.opacity = "1";
     var randomArr = ["/assets/catLeftEye.png", "/assets/catRightEye.png", "/assets/catLeftEyebrow.png", "/assets/catRightEyebrow.png", "/assets/catLeftWhiskers.png", "/assets/catRightWhiskers.png", "/assets/catMouth.png", "/assets/catNose.png"]
+    buttonNoise.play();
 }
 
 ////No Button on Are You Sure
@@ -273,6 +289,7 @@ function returnToGame() {
     areYouSure.style.display = "none";
     menuOptionButton[0].addEventListener("click", restartGame);
     menuButton.addEventListener("click", showMenuOptions);
+    buttonNoise.play();
 }
 
 ////Adding Place Button to Confirm Placements of Face Parts
@@ -332,24 +349,33 @@ for (var i=0; i<dragDiv.length; i++) {
 
 ////Function: Placing Cat Face Parts
 var placedDiv = document.getElementsByClassName("placedDiv");
-var placedCatPart = document.getElementsByClassName("placedCatPart");
+// var placedCatPart = document.getElementsByClassName("placedCatPart");
 
 function placePart() {
-    for (var i=0; i<dragDiv.length; i++) {
-        if (dragDiv[i].style.display === "block") {
-            // console.log(catPartImage[i]);
-            dragDiv[i].className = "placedDiv";
-            catPartImage[i].className = "placedCatPart";
-            // console.log(placedPart[placedPart.length-1]);
+    if (placeButton.innerHTML === "PLACE") {
+        for (var i=0; i<dragDiv.length; i++) {
+            if (dragDiv[i].style.display === "block") {
+                // console.log(catPartImage[i]);
+                dragDiv[i].className = "placedDiv";
+                catPartImage[i].className = "placedCatPart";
+                // console.log(placedPart[placedPart.length-1]);
+            }
         }
+        placedDiv[placedDiv.length-1].style.visibility = "hidden";
+        buttonNoise.play();
+        // placedCatPart[placedCatPart.length-1].style.display = "none";
+        dragDiv[0].style.display = "block";
+        if (dragDiv.length === 1) {
+            placeButton.innerHTML = "PLACE & REVEAL";
+        }
+        buttonNoise.play();
+    } else {
+        for (var i=0; i<placedDiv.length; i++) {
+            placedDiv[i].style.visibility = null;
+        }
+        blindSquare.style.display = "none";
     }
-    placedDiv[placedDiv.length-1].style.display = "none";
-    placedCatPart[placedCatPart.length-1].style.display = "none";
-    console.log(dragDiv.length); //dragDiv.length
-    console.log(placedDiv.length); //placedPart.length
-    dragDiv[Math.floor(Math.random() * dragDiv.length)].style.display = "block";
 }
-
 ////Check Top Screen for partsDiv
 
 //End of Gameplay
