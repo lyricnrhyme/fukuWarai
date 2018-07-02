@@ -13,6 +13,7 @@ var backgroundMusic = document.createElement("audio");
 backgroundMusic.id = "backgroundMusic";
 backgroundMusic.src = "assets/skyleoChibi.mp3";
 backgroundMusic.preload = "auto";
+backgroundMusic.loop = true;
 backgroundMusic.play();
 
 //////Button Noises
