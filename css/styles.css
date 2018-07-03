@@ -1,15 +1,22 @@
 body {
-    background-color: red;
+    /* background-color: red; */
+    background-image: url("../assets/danceCat.gif");
+    background-repeat: repeat;
+    background-size: 20% 30%;
     font-family: "Patua One", cursive;
 }
 
 /*All the top screen*/
 #title {
-    background-color: yellow;
+    background-color: rgb(122, 169, 222);
     /* margin: auto; */
     width: 1040px;
     font-size: 70px;
     text-align: center;
+    color: rgb(32, 101, 158);
+    border-radius: 15px;
+    margin-bottom: 10px;
+    border: 5px solid rgb(32, 101, 158);
 }
 
 #audio {
@@ -18,7 +25,7 @@ body {
 
 #gameScreen {
     height: 40%;
-    background-color: green;
+    /* background-color: green; */
     /* margin: auto; */
     width: 1040px;
     z-index: 1;
@@ -37,7 +44,9 @@ body {
 }
 
 #blindSquare {
-    background-color: darkcyan;
+    background-color: rgb(122, 169, 222);
+    border-radius: 15px;
+    border: 5px solid rgb(32, 101, 158);
     height: 549px;
     width: 1040px;
     margin: 0 auto;
@@ -48,7 +57,7 @@ body {
 
 /*Start Game Options*/
 #startGameOptions {
-    background-color: blue;
+    /* background-color: bliue; */
     width: 1040px;
     height: 100px;
     display: flex;
@@ -56,7 +65,7 @@ body {
 }
 
 #startGameButton {
-    background-color: pink;
+    background-color: rgb(254, 186, 180);
     width: 40%;
     height: 100%;
     border-radius: 15px;
@@ -64,6 +73,7 @@ body {
     text-align: center;
     margin: auto;
     line-height: 200%;
+    color: rgb(245, 120, 117);
 }
 
 #startGameButton:hover {
@@ -72,7 +82,7 @@ body {
 }
 
 #rulesButton {
-    background-color: pink;
+    background-color: rgb(254, 186, 180);
     width: 40%;
     height: 100%;
     border-radius: 15px;
@@ -80,6 +90,7 @@ body {
     font-size: 50px;
     margin: auto;
     line-height: 200%;
+    color: rgb(245, 120, 117);
 }
 
 #rulesButton:hover {
@@ -94,7 +105,7 @@ body {
     padding: 10px;
     width: 1020px;
     position: absolute;
-    z-index: 5;
+    z-index: 7;
 }
 
 #rulesDescrip {
@@ -119,7 +130,6 @@ body {
 
 /*Start Menu*/
 #midGameOptions {
-    background-color: aqua;
     margin: auto;
     display: flex;
     width: 1040px;
@@ -129,7 +139,7 @@ body {
 }
 
 #menuButton {
-    background-color: purple;
+    background-color: rgba(45, 170, 200);
     color: white;
     padding: 10px;
     width: 30%;
@@ -162,13 +172,13 @@ body {
     background-color: cornflowerblue;
     border-radius: 10px;
     width: 95%;
-    height: 25%;
+    height: 18%;
     margin: auto;
     color: white;
     margin-top: 5%;
     font-size: 35px;
     text-align: center;
-    line-height: 200%;
+    line-height: 150%;
 }
 
 #areYouSure {
@@ -221,7 +231,7 @@ body {
 }
 
 #placeButton {
-    background-color: purple;
+    background-color: rgba(45, 170, 200);
     color: white;
     padding: 10px;
     width: 30%;
@@ -241,7 +251,7 @@ body {
 
 /*Start Mid-Game*/
 #partsDiv {
-    background-color: khaki;
+    background-color: rgb(102, 149, 222);
     width: 200px;
     height: 200px;
     margin: auto;
@@ -250,6 +260,14 @@ body {
     /* text-align: center; */
     padding-top: 7px;
     padding-bottom: 10px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 5px solid rgb(32, 101, 158);
+}
+
+#partsDivTitle {
+    text-align: center;
+    font-size: 24px;
 }
 
 .dragDiv {
@@ -278,11 +296,18 @@ body {
 
 .placedDiv {
     position: absolute;
-    z-index: 5;
+    width: 200px;
+    height: 150px;
+    margin: auto;
+    z-index: 4;
+    padding-left: 25px;
+    padding-top: 30px;
+    top: 30px;
+    left: 10px;
 }
 
 #finalGameOptions {
-    background-color: aqua;
+    /* background-color: aqua; */
     margin: auto;
     display: flex;
     width: 1040px;

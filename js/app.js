@@ -14,6 +14,7 @@ backgroundMusic.id = "backgroundMusic";
 backgroundMusic.src = "assets/skyleoChibi.mp3";
 backgroundMusic.preload = "auto";
 backgroundMusic.loop = true;
+document.body.appendChild(backgroundMusic);
 backgroundMusic.play();
 
 //////Button Noises
@@ -35,9 +36,14 @@ rulesWindow.style.display = "none";
 ////Window where Cat Face Parts show up
 var partsDiv = document.createElement("div");
 partsDiv.id = "partsDiv";
-partsDiv.innerHTML = "Place This:<br>";
 document.body.appendChild(partsDiv);
 partsDiv.style.display = "none";
+
+////Adding partsDiv Title
+var partsDivTitle = document.createElement("div");
+partsDivTitle.id = "partsDivTitle";
+partsDivTitle.innerHTML = "Place This:"
+partsDiv.appendChild(partsDivTitle);
 
 ////Adding Cat Face Parts into Document
 var randomArr = ["assets/catLeftEye.png", "assets/catRightEye.png", "assets/catLeftEyebrow.png", "assets/catRightEyebrow.png", "assets/catLeftWhiskers.png", "assets/catRightWhiskers.png", "assets/catMouth.png", "assets/catNose.png"]
@@ -202,7 +208,7 @@ function showMenuOptions() {
 ////Check Top Screen for Menu Options
 
 ////Adding in Menu Option Buttons
-for (var i=0; i<3; i++) {
+for (var i=0; i<4; i++) {
     var makeMenuOption = document.createElement("div");
     makeMenuOption.className = "menuOptionButton";
     menuOptions.appendChild(makeMenuOption);
@@ -210,13 +216,15 @@ for (var i=0; i<3; i++) {
 
 ////Assigning Each Button a Function
 var menuOptionButton = document.getElementsByClassName("menuOptionButton");
-menuOptionButton[0].innerHTML = "Restart";
-menuOptionButton[1].innerHTML = "Help";
-menuOptionButton[2].innerHTML = "Quit";
+menuOptionButton[0].innerHTML = "Close";
+menuOptionButton[1].innerHTML = "Restart";
+menuOptionButton[2].innerHTML = "Help";
+menuOptionButton[3].innerHTML = "Quit";
 
-menuOptionButton[0].addEventListener("click", restartGame);
-menuOptionButton[1].addEventListener("click", helpButton);
-menuOptionButton[2].addEventListener("click", quitGame);
+menuOptionButton[0].addEventListener("click", showMenuOptions);
+menuOptionButton[1].addEventListener("click", restartGame);
+menuOptionButton[2].addEventListener("click", helpButton);
+menuOptionButton[3].addEventListener("click", quitGame);
 
 ////Function: Restart Game (When Restart Button Clicked)
 function restartGame() {
@@ -259,9 +267,12 @@ function quitGame() {
     menuOptions.style.opacity = "0.5";
     midGameOptions.style.opacity = "0.5";
     partsDiv.style.opacity = "0.5";
-    menuOptionButton[0].removeEventListener("click", restartGame);
+    menuOptionButton[1].removeEventListener("click", restartGame);
     menuButton.removeEventListener("click", showMenuOptions);
     buttonNoise.play();
+    if (rulesWindow.style.display === "block") {
+        rulesWindow.style.display = "none";
+    }
 }
 
 ////Adding Are You Sure Option when Quit Button Clicked
@@ -288,7 +299,7 @@ function confirmQuit() {
     menuOptions.style.display = "none";
     blindSquare.style.display = "none";
     menuButton.addEventListener("click", showMenuOptions);
-    menuOptionButton[0].addEventListener("click", restartGame);
+    menuOptionButton[1].addEventListener("click", restartGame);
     midGameOptions.style.opacity = "1";
     partsDiv.style.display = "none";
     partsDiv.style.opacity = "1";
@@ -324,7 +335,7 @@ function returnToGame() {
     midGameOptions.style.opacity = "1";
     partsDiv.style.opacity = "1";
     areYouSure.style.display = "none";
-    menuOptionButton[0].addEventListener("click", restartGame);
+    menuOptionButton[1].addEventListener("click", restartGame);
     menuButton.addEventListener("click", showMenuOptions);
     buttonNoise.play();
 }
@@ -412,6 +423,9 @@ function placePart() {
         dragDiv[0].className = "placedDiv";
         blindSquare.style.display = "none";
         finalGameOptions.style.display = "flex";
+        partsDivTitle.style.display = "none";
+        partsDiv.style.backgroundColor = null;
+        partsDiv.style.border = "none";
         finalNoise.play();
     }
 }
