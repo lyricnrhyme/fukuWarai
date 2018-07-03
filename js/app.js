@@ -132,6 +132,9 @@ function startGame() {
     }
     dragDiv[0].style.display = "block";
     buttonNoise.play();
+    partsDivTitle.style.display = "block";
+    partsDiv.style.backgroundColor = "rgb(102, 149, 222)";
+    partsDiv.style.border = "5px solid rgb(32, 101, 158)";
 }
 
 ////Adding Rules Button
@@ -249,6 +252,10 @@ function restartGame() {
         finalGameOptions.style.display = "none";
     }
     dragDiv[0].style.display = "block";
+    partsDivTitle.style.display = "block";
+    partsDiv.style.backgroundColor = "rgb(102, 149, 222)";
+    partsDiv.style.border = "5px solid rgb(32, 101, 158)";
+    midGameOptions.style.display = "flex";
 }
 
 ////Function: Opens Rules Window (When Help Button Clicked)
@@ -346,6 +353,33 @@ placeButton.id = "placeButton";
 placeButton.innerHTML = "PLACE";
 midGameOptions.appendChild(placeButton);
 placeButton.addEventListener("click", placePart);
+placeButton.addEventListener("mouseover", justForPlace);
+placeButton.addEventListener("mouseout", makePlaceNormal);
+
+////Giving Place Button a hover feature if it says "PLACE"
+function justForPlace() {
+    if (placeButton.innerHTML === "PLACE") {
+        placeButton.style.fontSize = "60px";
+        placeButton.style.lineHeight = "125%";
+    } else {
+        placeButton.style.fontSize = "48px";
+        placeButton.style.lineHeight = "48px";
+        placeButton.style.paddingTop = "5px";
+        placeButton.style.paddingBottom = "15px";
+    }
+}
+
+function makePlaceNormal() {
+    if (placeButton.innerHTML === "PLACE") {
+        placeButton.style.fontSize = "50px";
+        placeButton.style.lineHeight = "150%";
+    } else {
+        placeButton.style.fontSize = "45px";
+        placeButton.style.lineHeight = "45px";
+        placeButton.style.paddingTop = "5px";
+        placeButton.style.paddingBottom = "15px";
+    }
+}
 
 //End of Menu***
 
@@ -424,8 +458,9 @@ function placePart() {
         blindSquare.style.display = "none";
         finalGameOptions.style.display = "flex";
         partsDivTitle.style.display = "none";
-        partsDiv.style.backgroundColor = null;
+        partsDiv.style.backgroundColor = "rgba(0,0,0,0)";
         partsDiv.style.border = "none";
+        midGameOptions.style.display = "none";
         finalNoise.play();
     }
 }

@@ -45,8 +45,8 @@ body {
 
 #blindSquare {
     background-color: rgb(122, 169, 222);
-    border-radius: 15px;
     border: 5px solid rgb(32, 101, 158);
+    border-radius: 15px;
     height: 549px;
     width: 1040px;
     margin: 0 auto;
@@ -74,6 +74,7 @@ body {
     margin: auto;
     line-height: 200%;
     color: rgb(245, 120, 117);
+    border: 5px solid rgb(245, 120, 117);
 }
 
 #startGameButton:hover {
@@ -83,6 +84,8 @@ body {
 
 #rulesButton {
     background-color: rgb(254, 186, 180);
+    color: rgb(245, 120, 117);
+    border: 5px solid rgb(245, 120, 117);
     width: 40%;
     height: 100%;
     border-radius: 15px;
@@ -90,7 +93,6 @@ body {
     font-size: 50px;
     margin: auto;
     line-height: 200%;
-    color: rgb(245, 120, 117);
 }
 
 #rulesButton:hover {
@@ -139,7 +141,7 @@ body {
 }
 
 #menuButton {
-    background-color: rgba(45, 170, 200);
+    background-color: rgb(102, 149, 222);
     color: white;
     padding: 10px;
     width: 30%;
@@ -149,6 +151,7 @@ body {
     border-radius: 15px;
     font-size: 50px;
     line-height: 150%;
+    border: 5px solid rgb(32, 101, 158);
 }
 
 #menuButton:hover {
@@ -157,7 +160,7 @@ body {
 }
 
 #menuOptions {
-    background-color: brown;
+    background-color: rgb(32, 101, 158);
     width: 350px;
     height: 300px;
     position: absolute;
@@ -169,7 +172,7 @@ body {
 }
 
 .menuOptionButton {
-    background-color: cornflowerblue;
+    background-color: rgb(102, 149, 222);
     border-radius: 10px;
     width: 95%;
     height: 18%;
@@ -231,7 +234,8 @@ body {
 }
 
 #placeButton {
-    background-color: rgba(45, 170, 200);
+    background-color: rgba(102, 149, 222);
+    border: 5px solid rgb(32, 101, 158);
     color: white;
     padding: 10px;
     width: 30%;
@@ -266,6 +270,7 @@ body {
 }
 
 #partsDivTitle {
+    color: white;
     text-align: center;
     font-size: 24px;
 }
@@ -317,8 +322,9 @@ body {
 }
 
 #replayButton {
-    background-color: purple;
-    color: white;
+    background-color: rgb(254, 186, 180);
+    color: rgb(245, 120, 117);
+    border: 5px solid rgb(245, 120, 117);
     padding: 10px;
     width: 30%;
     height: 80px;
@@ -335,8 +341,9 @@ body {
 }
 
 #returnToMain {
-    background-color: purple;
-    color: white;
+    background-color: rgb(254, 186, 180);
+    color: rgb(245, 120, 117);
+    border: 5px solid rgb(245, 120, 117);
     padding: 10px;
     width: 30%;
     height: 80px;
