@@ -350,11 +350,11 @@ body {
     text-align: center;
     margin: auto;
     border-radius: 15px;
-    font-size: 35px;
-    line-height: 35px;
+    font-size: 40px;
+    line-height: 40px;
 }
 
 #returnToMain:hover {
-    font-size: 35px;
-    line-height: 125%;
+    font-size: 42px;
+    line-height: 42px;
 }
