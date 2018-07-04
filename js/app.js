@@ -162,7 +162,7 @@ function openRules() {
 ////Adding the Rules on How to Play Fuku Warai
 var rulesDescrip = document.createElement("div");
 rulesDescrip.id = "rulesDescrip";
-rulesDescrip.innerHTML = "Fuku Warai is a game where you reconstruct a face without looking (what?!) You will be given a random part of the face which you will place blindly on a blank face. <br><br> Click and drag each face part given at random where you think the part should go onto the blank surface. The goal of the game is to make the face as perfect as possible (or feel free to try make it Picasso style!) Good luck!";
+rulesDescrip.innerHTML = "Fuku Warai is a game where you reconstruct a face without looking (what?!) You will be given a random part like a nose or whiskers which you will place blindly on a blank face. <br><br> Click and drag each face part given at random where you think the part should go onto the blank surface. The goal of the game is to make the face as perfect as possible. Good luck!";
 rulesWindow.appendChild(rulesDescrip);
 
 ////Adding in Additional Button for Closing Rules Window

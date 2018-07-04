@@ -117,7 +117,7 @@ body {
 
 #closeRulesButton {
     color: white;
-    background-color: purple;
+    background-color: rgb(245, 120, 117);
     padding: 10px;
     width: 10%;
     text-align: center;
@@ -160,7 +160,9 @@ body {
 }
 
 #menuOptions {
-    background-color: rgb(32, 101, 158);
+    background-color: rgba(102, 149, 222);
+    border: 5px solid rgb(32, 101, 158);
+    color: white;
     width: 350px;
     height: 300px;
     position: absolute;
@@ -172,7 +174,7 @@ body {
 }
 
 .menuOptionButton {
-    background-color: rgb(102, 149, 222);
+    background-color: rgb(32, 101, 158);
     border-radius: 10px;
     width: 95%;
     height: 18%;
@@ -185,7 +187,9 @@ body {
 }
 
 #areYouSure {
-    background-color: red;
+    background-color: rgb(254, 186, 180);
+    color: rgb(245, 120, 117);
+    border: 5px solid rgb(245, 120, 117);
     border-radius: 10px;
     position: absolute;
     z-index: 7;
@@ -200,11 +204,11 @@ body {
 }
 
 #imSure {
-    background-color: blueviolet;
+    background-color: rgb(245, 120, 117);
+    color: white;
     width: 75%;
     height: 30%;
     margin: auto;
-    color: white;
     border-radius: 10px;
     text-align: center;
     margin-top: 2%;
@@ -217,11 +221,11 @@ body {
 }
 
 #notSure {
-    background-color: blueviolet;
+    background-color: rgb(245, 120, 117);
+    color: white;
     width: 75%;
     height: 30%;
     margin: auto;
-    color: white;
     border-radius: 10px;
     text-align: center;
     margin-top: 2%;
